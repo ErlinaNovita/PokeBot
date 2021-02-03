@@ -1,1 +1,1 @@
-web: php artisan serve --localhost=0.0.0.0
+worker: php artisan serve --host=0.0.0.0
