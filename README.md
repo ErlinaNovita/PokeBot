@@ -52,6 +52,7 @@ You can now access the server at http://localhost:8000
 ## Environment variables
 
 `.env` - Environment variables can be set in this file
+
 [which can be customized as needed] :
 - DB_CONNECTION
 - DB_HOST
@@ -62,14 +63,15 @@ You can now access the server at http://localhost:8000
 
 ## php.ini
 
-```
+
 - do a search for the following 2 keywords: 
+```
 *extension=pdo_pgsql*
 *extension=pgsql*
 ```
 
-```
 - into this : 
+```
 extension=php_pdo_pgsql.dll
 extension=pdo_sqlite
 extension=php_pgsql.dll
@@ -78,7 +80,9 @@ extension=php_pgsql.dll
 ## Add and custom some item 
 
 - open direktori:\foldername\database\migrations\2014_10_12_000000_create_users_table.php
+
 - add and custom function up like this :
+    ```
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -87,23 +91,29 @@ extension=php_pgsql.dll
             $table->timestamps();
         });
     }
+    ```
     
 ## Controller
 
 - create controller into folder direktori:\foldername\app\Http\Controllers\
+
 - insert function get list like this :
-    `public function list()
-    `{
-        `$user = User::query()->get();
-        `return response()->json($user);
-    `}
-- insert function create & validation for like this :
-    `public function create(Request $request)
+    ```
+    public function list()
     {
-        `$validated = $request->validate([
-            `'id' => 'required',
-            `'name' => 'required',
-        `]);
+        $user = User::query()->get();
+        return response()->json($user);
+    }
+    ```
+    
+- insert function create & validation for like this :
+    ```
+    public function create(Request $request)
+    {
+        $validated = $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+        ]);
 
         $user = User::query()->where('id', $request->id)->get()->first();
 
@@ -117,16 +127,20 @@ extension=php_pgsql.dll
                 'name' => $request->name
             ]);
         }
-    }`
+    }
+    ```
 
 ## api.php
 
 - open file direktori:\foldername\routes\api.php
+
 - change Route::prefix into this :
-    `Route::prefix('pokebot')->group(function () {
-        `Route::post('/register', 'App\Http\Controllers\RegisterAndListController@create');
-        `Route::get('/user', 'App\Http\Controllers\RegisterAndListController@list');
-    `});
+    ```
+    Route::prefix('pokebot')->group(function () {
+        Route::post('/register', 'App\Http\Controllers\RegisterAndListController@create');
+        Route::get('/user', 'App\Http\Controllers\RegisterAndListController@list');
+    });
+    ```
     
 ## Procfile
 
