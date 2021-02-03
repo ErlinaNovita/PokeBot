@@ -1,1 +1,1 @@
-worker: php artisan serve --host=0.0.0.0
+web: vendor/bin/heroku-php-apache2 public/
