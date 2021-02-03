@@ -75,14 +75,14 @@ extension=php_pgsql.dll
 
 - open direktori:\foldername\database\migrations\2014_10_12_000000_create_users_table.php
 - add and custom function up like this :
-    `public function up()
-    `{
-        `Schema::create('users', function (Blueprint $table) {
-            `$table->string('id');
-            `$table->string('name');
-            `$table->timestamps();
-        `});
-    `}
+    public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->string('id');
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
     
 ## Controller
 
