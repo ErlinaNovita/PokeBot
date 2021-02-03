@@ -62,14 +62,18 @@ You can now access the server at http://localhost:8000
 
 ## php.ini
 
-- do a search for the following 2 keywords: :
+```
+- do a search for the following 2 keywords: 
 *extension=pdo_pgsql*
 *extension=pgsql*
+```
 
+```
 - into this : 
 extension=php_pdo_pgsql.dll
 extension=pdo_sqlite
 extension=php_pgsql.dll
+```
 
 ## Add and custom some item 
 
